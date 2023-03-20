@@ -2,17 +2,18 @@
 
 namespace App\Controller;
 
+use App\Entity\Station;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class AppController extends AbstractController
+class StationController extends AbstractController
 {
-    #[Route('/', name: 'app_app')]
+    #[Route('/station', name: 'app_station')]
     public function index(): Response
     {
-        return $this->render('app/index.html.twig', [
-            'controller_name' => 'AppController',
+        return $this->render('station/index.html.twig', [
+            'controller_name' => 'StationController',
         ]);
     }
 }

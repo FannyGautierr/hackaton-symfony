@@ -6,13 +6,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class AppController extends AbstractController
+class SkiTrackController extends AbstractController
 {
-    #[Route('/', name: 'app_app')]
+    #[Route('/ski/track', name: 'app_ski_track')]
     public function index(): Response
     {
-        return $this->render('app/index.html.twig', [
-            'controller_name' => 'AppController',
+        return $this->render('ski_track/index.html.twig', [
+            'controller_name' => 'SkiTrackController',
         ]);
     }
 }
