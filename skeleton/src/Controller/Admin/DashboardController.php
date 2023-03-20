@@ -3,6 +3,8 @@
 namespace App\Controller\Admin;
 
 use App\Controller\StationController;
+use App\Entity\SkiLift;
+use App\Entity\SkiTrack;
 use App\Entity\Station;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
@@ -44,8 +46,9 @@ class DashboardController extends AbstractDashboardController
     public function configureMenuItems(): iterable
     {
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
-        yield MenuItem::linkToCrud('The Label', 'fas fa-list', Station::class);
-        yield MenuItem::linkToCrud('The Label', 'fas fa-list', Station::class);
+        yield MenuItem::linkToCrud('Stations', 'fas fa-list', Station::class);
+        yield MenuItem::linkToCrud('Ski Lifts', 'fas fa-list', SkiLift::class);
+        yield MenuItem::linkToCrud('Ski Tracks', 'fas fa-list', SkiTrack::class);
 
     }
 }
