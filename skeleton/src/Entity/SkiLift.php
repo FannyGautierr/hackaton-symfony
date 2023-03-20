@@ -29,6 +29,10 @@ class SkiLift
     #[ORM\Column(length: 255)]
     private ?string $information = null;
 
+    #[ORM\ManyToOne(inversedBy: 'skiLifts')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Station $station = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -90,6 +94,18 @@ class SkiLift
     public function setInformation(string $information): self
     {
         $this->information = $information;
+
+        return $this;
+    }
+
+    public function getStation(): ?Station
+    {
+        return $this->station;
+    }
+
+    public function setStation(?Station $station): self
+    {
+        $this->station = $station;
 
         return $this;
     }

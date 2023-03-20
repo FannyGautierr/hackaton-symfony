@@ -32,9 +32,13 @@ class Station
     #[ORM\OneToMany(mappedBy: 'Station', targetEntity: SkiTrack::class, orphanRemoval: true)]
     private Collection $skiTracks;
 
+    #[ORM\OneToMany(mappedBy: 'station', targetEntity: SkiLift::class)]
+    private Collection $skiLifts;
+
     public function __construct()
     {
         $this->skiTracks = new ArrayCollection();
+        $this->skiLifts = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -114,6 +118,36 @@ class Station
             // set the owning side to null (unless already changed)
             if ($skiTrack->getStation() === $this) {
                 $skiTrack->setStation(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, SkiLift>
+     */
+    public function getSkiLifts(): Collection
+    {
+        return $this->skiLifts;
+    }
+
+    public function addSkiLift(SkiLift $skiLift): self
+    {
+        if (!$this->skiLifts->contains($skiLift)) {
+            $this->skiLifts->add($skiLift);
+            $skiLift->setStation($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSkiLift(SkiLift $skiLift): self
+    {
+        if ($this->skiLifts->removeElement($skiLift)) {
+            // set the owning side to null (unless already changed)
+            if ($skiLift->getStation() === $this) {
+                $skiLift->setStation(null);
             }
         }
 
