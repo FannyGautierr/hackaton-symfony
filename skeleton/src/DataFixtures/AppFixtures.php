@@ -40,7 +40,7 @@ class AppFixtures extends Fixture
 
         $stationRepository = $manager->getRepository(Station::class);
         $stations = $stationRepository->findAll();
-        foreach ($stations as $stat)
+        foreach ($stations as $stat){
             for ($i = 1; $i<=10; $i++){
                 $skilift = new SkiLift();
                 $skilift->setName('Remontée de la station ' . $stat->getName());
@@ -62,6 +62,7 @@ class AppFixtures extends Fixture
                 $skitrack->setStation($stat);
                 $manager->persist($skitrack);
             }
-            $manager->flush();
+        }
+        $manager->flush();
     }
 }
