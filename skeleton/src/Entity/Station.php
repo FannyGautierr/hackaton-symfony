@@ -27,7 +27,7 @@ class Station
 
     #[ORM\ManyToOne(inversedBy: 'stations')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?User $domaine = null;
+    private ?Domain $domaine = null;
 
     #[ORM\OneToMany(mappedBy: 'Station', targetEntity: SkiTrack::class, orphanRemoval: true)]
     private Collection $skiTracks;
