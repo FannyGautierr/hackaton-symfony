@@ -7,6 +7,7 @@
 /public/bundles/
 /var/
 /vendor/
+.idea/
 ###< symfony/framework-bundle ###
 public/uploads/logo
 !public/uploads/logo/.gitkeep
