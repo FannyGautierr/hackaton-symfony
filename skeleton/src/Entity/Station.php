@@ -82,12 +82,12 @@ class Station
         return $this;
     }
 
-    public function getDomaine(): ?User
+    public function getDomaine(): ?Domain
     {
         return $this->domaine;
     }
 
-    public function setDomaine(?User $domaine): self
+    public function setDomaine(?Domain $domaine): self
     {
         $this->domaine = $domaine;
 

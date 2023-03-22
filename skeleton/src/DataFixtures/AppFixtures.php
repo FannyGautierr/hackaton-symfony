@@ -2,6 +2,7 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\Domain;
 use App\Entity\SkiLift;
 use App\Entity\SkiTrack;
 use App\Entity\Station;
@@ -20,6 +21,11 @@ class AppFixtures extends Fixture
         $skiliftType = ['Oeufs', 'Tire-fesses', 'Télé-cabine', 'Télé-siège'];
         $skiTrackType = ['Verte', 'Bleue', 'Rouge', 'Noire'];
 
+        $domaine = new Domain();
+        $domaine->setName('Domaine des Saisies');
+        $domaine->setLogo('logo.png');
+        $manager->persist($domaine);
+        $manager->flush();
 
         $user = new User();
         $user->setEmail('domain@gmail.com');
@@ -32,7 +38,7 @@ class AppFixtures extends Fixture
             $station = new Station();
             $station->setName($stationsname[$i-1]);
             $station->setDescription($stationsdesc[$i-1]);
-            $station->setDomaine($user);
+            $station->setDomaine($domaine);
             $manager->persist($station);
         }
         $manager->flush();
