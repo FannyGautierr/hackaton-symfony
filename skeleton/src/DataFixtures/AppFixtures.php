@@ -11,6 +11,9 @@ use App\Repository\StationRepository;
 use Cassandra\Date;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+
+
 
 class AppFixtures extends Fixture
 {
@@ -27,12 +30,6 @@ class AppFixtures extends Fixture
         $manager->persist($domaine);
         $manager->flush();
 
-        $user = new User();
-        $user->setEmail('domain@gmail.com');
-        $user->setPassword('password');
-        $user->setRoles(['ROLE_SUPER_ADMIN']);
-        $manager->persist($user);
-        $manager->flush();
 
         for ($i = 1; $i <= 5; $i++){
             $station = new Station();
