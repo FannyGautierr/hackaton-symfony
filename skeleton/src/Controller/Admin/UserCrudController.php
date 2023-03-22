@@ -4,6 +4,8 @@ namespace App\Controller\Admin;
 
 use App\Entity\User;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
 class UserCrudController extends AbstractCrudController
 {
@@ -16,8 +18,13 @@ class UserCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            TextField::new('title'),
-            TextEditorField::new('description'),
+            TextField::new('email'),
+            ChoiceField::new('roles')->autocomplete()->allowMultipleChoices()
+                ->setChoices([
+                    'SuperAdmin' => 'ROLE_SUPER_ADMIN',
+                    'Admin'=> 'ROLE_ADMIN',
+                    'User'=> 'ROLE_USER'
+            ])
         ];
     }
 
