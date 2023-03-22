@@ -35,6 +35,9 @@ class Station
     #[ORM\OneToMany(mappedBy: 'station', targetEntity: SkiLift::class)]
     private Collection $skiLifts;
 
+    #[ORM\OneToOne(inversedBy: 'station', cascade: ['persist', 'remove'])]
+    private ?User $user = null;
+
     public function __construct()
     {
         $this->skiTracks = new ArrayCollection();
@@ -150,6 +153,18 @@ class Station
                 $skiLift->setStation(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }

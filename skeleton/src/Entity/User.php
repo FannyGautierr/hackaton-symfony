@@ -34,6 +34,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'domaine', targetEntity: Station::class, orphanRemoval: true)]
     private Collection $stations;
 
+    #[ORM\OneToOne(mappedBy: 'user', cascade: ['persist', 'remove'])]
+    private ?Station $station = null;
+
     public function __construct()
     {
         $this->stations = new ArrayCollection();
@@ -137,5 +140,31 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         }
 
         return $this;
+    }
+
+    public function getStation(): ?Station
+    {
+        return $this->station;
+    }
+
+    public function setStation(?Station $station): self
+    {
+        // unset the owning side of the relation if necessary
+        if ($station === null && $this->station !== null) {
+            $this->station->setUser(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($station !== null && $station->getUser() !== $this) {
+            $station->setUser($this);
+        }
+
+        $this->station = $station;
+
+        return $this;
+    }
+    public function __toString()
+    {
+        return $this->email;
     }
 }

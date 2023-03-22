@@ -4,6 +4,8 @@ namespace App\Controller\Admin;
 
 use App\Entity\SkiLift;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
 class SkiLiftCrudController extends AbstractCrudController
 {
@@ -17,8 +19,9 @@ class SkiLiftCrudController extends AbstractCrudController
     {
         return [
 
-            TextField::new('title'),
-            TextEditorField::new('description'),
+            TextField::new('name'),
+            TextField::new('type'),
+            AssociationField::new("station")
         ];
     }
 
