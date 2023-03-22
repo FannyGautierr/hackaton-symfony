@@ -34,6 +34,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'domaine', targetEntity: Station::class, orphanRemoval: true)]
     private Collection $stations;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $AdminRequest = null;
+
     public function __construct()
     {
         $this->stations = new ArrayCollection();
@@ -135,6 +138,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
                 $station->setDomaine(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getAdminRequest(): ?string
+    {
+        return $this->AdminRequest;
+    }
+
+    public function setAdminRequest(?string $AdminRequest): self
+    {
+        $this->AdminRequest = $AdminRequest;
 
         return $this;
     }
