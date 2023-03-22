@@ -39,14 +39,7 @@ class StationRepository extends ServiceEntityRepository
         }
     }
 
-    public function findStationsByCurrentUser($userId)
-    {
-        return $this->createQueryBuilder('s')
-            ->where('s.user_id = :userId')
-            ->setParameter('userId', $userId)
-            ->getQuery()
-            ->getResult();
-    }
+
 
 
 //    /**

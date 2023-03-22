@@ -11,7 +11,9 @@ use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Dto\EntityDto;
 use EasyCorp\Bundle\EasyAdminBundle\Dto\SearchDto;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TimeField;
 use Symfony\Bundle\SecurityBundle\Security;
 
 class SkiTrackCrudController extends AbstractCrudController
@@ -38,6 +40,10 @@ class SkiTrackCrudController extends AbstractCrudController
             TextField::new('name'),
             TextField::new('difficulty'),
             AssociationField::new('Station'),
+            TimeField::new("open"),
+            TimeField::new("close"),
+            TextField::new('information'),
+            BooleanField::new('exception')
 
         ];
     }

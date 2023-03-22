@@ -39,14 +39,7 @@ class SkiTrackRepository extends ServiceEntityRepository
         }
     }
 
-    public function findSkiTrackByCurrentUser($stationId)
-    {
-        return $this->createQueryBuilder('st')
-            ->where('st.station_id = :stationId')
-            ->setParameter('stationId', $stationId)
-            ->getQuery()
-            ->getResult();
-    }
+
 
 //    /**
 //     * @return SkiTrack[] Returns an array of SkiTrack objects
