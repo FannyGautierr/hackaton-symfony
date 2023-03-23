@@ -153,4 +153,8 @@ class Station
 
         return $this;
     }
+
+    public function setUser(User $user)
+    {
+    }
 }
