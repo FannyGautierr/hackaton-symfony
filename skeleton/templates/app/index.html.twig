@@ -4,23 +4,83 @@
 
 {% block body %}
 <style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-    
+    .card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  width: 50%;
+  gap:10px;
+}
+
+
+
+.left img {
+  max-width: 200px;
+}
+
+.right {
+  display: flex;
+  flex-direction: column;
+}
+
+.right h2 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+}
+
+.right p {
+  margin: 0;
+  font-size: 18px;
+  color: #666;
+}
+
+.right a {
+  text-decoration: none;
+}
+
+.banner {
+  background-image: url("img/banner.png");
+  background-size: cover;
+  color: black;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;  
+  height: 500px;
+}
+
+.banner h1 {
+  font-size: 56px;
+  font-weight: 400;
+  margin: 0;
+}
+
 </style>
+<div class="banner">
+<h1>Bienvenue</h1>
+</div>
 
-<div class="example-wrapper">
-    {% for domain in domains %}
-    <div>{{ domain.name }}</div>
+<div class="card">
+    <div class="left">
+        {% for domain in domains %}
+            <img src="{{ asset('img/domain.png') }}" alt="ski photo">
+    </div>
+    <div class="right">
+        <h2>{{ domain.name }}</h2>
         {% for station in stations %}
-        {% if station.domaine  ==  domain %}
-            <a href="{{ path('app_station',{'id':station.id}) }}">
-            <div>{{ station.name }}</div>
-
-            </a>
+            {% if station.domaine  ==  domain %}
+                <a href="{{ path('app_station',{'id':station.id}) }}"><p>{{ station.name }}</p></a>
             {% endif %}
         {% endfor %}
-    {% endfor %}
+    </div>
+        {% endfor %}
 </div>
 
 {% endblock %}
