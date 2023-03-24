@@ -6,3 +6,11 @@ h3{
     color: #627EA9;
     font-size: 28px !important;
 }
+.dropdown-content{
+    display: block;
+    padding: 8px 16px;
+    color: #627EA9;
+}
+.dropdown-content:hover{
+    background-color: #F4F4F4;
+}
