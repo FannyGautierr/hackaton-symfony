@@ -3,68 +3,18 @@
 {% block title %}Hello AppController!{% endblock %}
 
 {% block body %}
-<style>
-    .card {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  padding: 16px;
-  width: 50%;
-  gap:10px;
-}
+<link rel="stylesheet" href="{{ asset('style/_reset.css') }}" />
+<link rel="stylesheet" href="{{ asset('style/_banner.css') }}" />
+<link rel="stylesheet" href="{{ asset('style/homePage.css') }}" />
+<link rel="stylesheet" href="{{ asset('style/_card.css') }}" />
 
-
-
-.left img {
-  max-width: 200px;
-}
-
-.right {
-  display: flex;
-  flex-direction: column;
-}
-
-.right h2 {
-  margin: 0;
-  font-size: 24px;
-  font-weight: bold;
-  color: #333;
-}
-
-.right p {
-  margin: 0;
-  font-size: 18px;
-  color: #666;
-}
-
-.right a {
-  text-decoration: none;
-}
-
-.banner {
-  background-image: url("img/banner.png");
-  background-size: cover;
-  color: black;
-  padding: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;  
-  height: 500px;
-}
-
-.banner h1 {
-  font-size: 56px;
-  font-weight: 400;
-  margin: 0;
-}
-
-</style>
 <div class="banner">
-<h1>Bienvenue</h1>
+    <h1>Bienvenue</h1>
+</div>
+
+<div class="titles">
+    <h3>DÉCOUVREZ NOS</h3>
+    <h2>Domaines</h2>
 </div>
 
 <div class="card">
