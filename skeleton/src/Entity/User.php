@@ -36,6 +36,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $AdminRequest = null;
+    #[ORM\OneToOne(mappedBy: 'user', cascade: ['persist', 'remove'])]
+    private ?Station $station = null;
 
     public function __construct()
     {
@@ -152,5 +154,30 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->AdminRequest = $AdminRequest;
 
         return $this;
+    }
+    public function getStation(): ?Station
+    {
+        return $this->station;
+    }
+
+    public function setStation(?Station $station): self
+    {
+        // unset the owning side of the relation if necessary
+        if ($station === null && $this->station !== null) {
+            $this->station->setUser(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($station !== null && $station->getUser() !== $this) {
+            $station->setUser($this);
+        }
+
+        $this->station = $station;
+
+        return $this;
+    }
+    public function __toString()
+    {
+        return $this->email;
     }
 }

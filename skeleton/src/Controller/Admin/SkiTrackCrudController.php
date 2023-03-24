@@ -3,15 +3,38 @@
 namespace App\Controller\Admin;
 
 use App\Entity\SkiTrack;
+use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\QueryBuilder;
+use EasyCorp\Bundle\EasyAdminBundle\Collection\FieldCollection;
+use EasyCorp\Bundle\EasyAdminBundle\Collection\FilterCollection;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+<<<<<<< HEAD
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TimeField;
 use Symfony\Component\Validator\Constraints\Time;
+=======
+use EasyCorp\Bundle\EasyAdminBundle\Dto\EntityDto;
+use EasyCorp\Bundle\EasyAdminBundle\Dto\SearchDto;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TimeField;
+use Symfony\Bundle\SecurityBundle\Security;
+>>>>>>> fanny
 
 class SkiTrackCrudController extends AbstractCrudController
 {
+
+    private $security;
+    private $entityManager;
+
+    public function __construct(EntityManagerInterface $entityManager,Security $security)
+    {
+        $this->entityManager = $entityManager;
+        $this->security = $security;
+    }
     public static function getEntityFqcn(): string
     {
         return SkiTrack::class;
@@ -24,12 +47,32 @@ class SkiTrackCrudController extends AbstractCrudController
 
             TextField::new('name'),
             TextField::new('difficulty'),
+<<<<<<< HEAD
             TimeField::new('open'),
             TimeField::new('close'),
             BooleanField::new('exception'),
             TextField::new('information')
+=======
+            AssociationField::new('Station'),
+            TimeField::new("open"),
+            TimeField::new("close"),
+            TextField::new('information'),
+            BooleanField::new('exception')
+>>>>>>> fanny
 
         ];
     }
+
+    public function createIndexQueryBuilder(SearchDto $searchDto, EntityDto $entityDto, FieldCollection $fields, FilterCollection $filters): QueryBuilder
+    {
+        $stationId = $this->security->getUser()->getStation()->getId();
+
+        return $this->entityManager->createQueryBuilder()
+            ->select('st')
+            ->from('App\Entity\SkiTrack', 'st')
+            ->where('st.Station = :stationId')
+            ->setParameter('stationId', $stationId);
+    }
+
 
 }
