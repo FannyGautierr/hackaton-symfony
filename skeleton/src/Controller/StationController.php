@@ -14,10 +14,12 @@ class StationController extends AbstractController
     public function index( $id,StationRepository $stationRepository): Response
     {
         $stations = $stationRepository->find($id);
+        $days = ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim'];
 
         return $this->render('station/index.html.twig', [
             'controller_name' => 'StationController',
-            'stations'=>$stations
+            'stations'=>$stations,
+            'days'=> $days
         ]);
     }
 
