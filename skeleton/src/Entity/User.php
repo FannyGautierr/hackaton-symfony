@@ -34,13 +34,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'domaine', targetEntity: Station::class, orphanRemoval: true)]
     private Collection $stations;
 
-
-    #[ORM\OneToOne(mappedBy: 'user', cascade: ['persist', 'remove'])]
-    private ?Station $station = null;
-
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $AdminRequest = null;
-
+    #[ORM\OneToOne(mappedBy: 'user', cascade: ['persist', 'remove'])]
+    private ?Station $station = null;
 
     public function __construct()
     {
@@ -147,7 +144,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
+    public function getAdminRequest(): ?string
+    {
+        return $this->AdminRequest;
+    }
 
+    public function setAdminRequest(?string $AdminRequest): self
+    {
+        $this->AdminRequest = $AdminRequest;
+
+        return $this;
+    }
     public function getStation(): ?Station
     {
         return $this->station;
@@ -173,17 +180,4 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         return $this->email;
     }
-
-    public function getAdminRequest(): ?string
-    {
-        return $this->AdminRequest;
-    }
-
-    public function setAdminRequest(?string $AdminRequest): self
-    {
-        $this->AdminRequest = $AdminRequest;
-
-        return $this;
-    }
-
 }
