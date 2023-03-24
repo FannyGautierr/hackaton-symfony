@@ -8,28 +8,31 @@
         <h1>HEADER</h1>
     </div>
 
-    <div class="flex relative items-center">
+    <div class="searchBar flex relative items-center">
         <input class="border-b-black border-b-2 focus:outline-none text-xl w-[50vw]" type="text" placeholder="Rechercher un post...">
         <i class="relative right-6 fa fa-search fa-3x" aria-hidden="true"></i>
     </div>
 
-    <div>
-        <div>
+    <div class="content">
+
+        <div class="navContent">
             <h2>Catégories</h2>
-            <h3>Tous</h3>
-            <h3>Infos officielles</h3>
-            <h3>Événements</h3>
-            <h3>Concours</h3>
-            <h3>Bons plans</h3>
-            <h3>Pour les djeuns</h3>
-            <h3>Coin photos</h3>
-            <h3>Objets perdus</h3>
+            <div class="feedNav">
+                <h3>Tous</h3>
+                <h3>Infos officielles</h3>
+                <h3>Événements</h3>
+                <h3>Concours</h3>
+                <h3>Bons plans</h3>
+                <h3>Pour les djeuns</h3>
+                <h3>Coin photos</h3>
+                <h3>Objets perdus</h3>
+            </div>
         </div>
 
-        <div>
-            <div>
+        <div class="feedContent">
+            <div class="newPost">
                 <h2>Rédiger un post</h2>
-                <div>
+                <div class="upContentNewPost createNewPost">
                     <img class="" src="{{ asset('img/search.png') }}">
                     <div class="relative">
                         <button id="menu-button" class="px-4 py-2 text-gray-700 rounded-md bg-gray-100 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none">
@@ -41,11 +44,10 @@
                             <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Item 3</a>
                         </div>
                     </div>
-
-
                 </div>
             </div>
-            <div>
+
+            <div class="feed">
                 <div>
                     <h2>Fil d'actus</h2>
                     <h3>TOUS</h3>
