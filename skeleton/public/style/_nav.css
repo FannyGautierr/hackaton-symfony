@@ -1,3 +1,4 @@
+/* Desktop styles */
 nav{
     display: flex;
     justify-content: space-between;
@@ -35,3 +36,5 @@ nav a{
     font-weight: 500;
     transition: all 0.3s ease;
 }
+
+
