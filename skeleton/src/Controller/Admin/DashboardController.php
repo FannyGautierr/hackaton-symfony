@@ -6,6 +6,7 @@ use App\Controller\StationController;
 use App\Entity\SkiLift;
 use App\Entity\SkiTrack;
 use App\Entity\Station;
+use App\Entity\User;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
@@ -54,6 +55,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Stations', 'fas fa-list', Station::class);
         yield MenuItem::linkToCrud('Ski Lifts', 'fa-ski-lift', SkiLift::class);
         yield MenuItem::linkToCrud('Ski Tracks', 'fas fa-list', SkiTrack::class);
+        yield MenuItem::linkToCrud('Users', 'fas fa-list', User::class);
 
     }
 }

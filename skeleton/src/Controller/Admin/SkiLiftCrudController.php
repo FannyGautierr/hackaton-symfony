@@ -12,8 +12,11 @@ use EasyCorp\Bundle\EasyAdminBundle\Dto\EntityDto;
 use EasyCorp\Bundle\EasyAdminBundle\Dto\SearchDto;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\TimeField;
 use Symfony\Bundle\SecurityBundle\Security;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
+
+
 
 class SkiLiftCrudController extends AbstractCrudController
 {   private $security;
@@ -33,6 +36,7 @@ class SkiLiftCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
+
 
             TextField::new('name'),
             TextField::new('type'),
