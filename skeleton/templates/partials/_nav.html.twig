@@ -1,0 +1,21 @@
+
+<link rel="stylesheet" href="{{ asset('style/_nav.css') }}" />
+
+<nav>
+    <div>
+        <a class="logo" href="{{ path ('app_app') }}">Startup</a>
+
+    </div>
+    <div>
+        <ul>
+            <li><a href="{{ path ('app_app') }}">Home</a></li>
+            <li><a href="">Community</a></li>
+        {% if app.user %}
+            <li><a href="#">Profile</a></li>
+            <li><a href="{{ path ('app_logout') }}">Logout</a></li>
+        {% else %}
+        <li><a class="btn" href="{{ path ('app_login') }}">Login</a></li>
+        {% endif %}
+         </ul>
+    </div>
+</nav>
