@@ -124,4 +124,9 @@ class SkiTrack
 
         return $this;
     }
+
+    public function __toString()
+    {
+        return $this->open->format('H:i') . ' - ' . $this->close->format('H:i') . ' ' ;
+    }
 }

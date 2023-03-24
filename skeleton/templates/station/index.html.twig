@@ -4,17 +4,59 @@
 
 {% block body %}
 <style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    *{
+        font-family: Poppins, sans-serif;
+    }
+  .header-station {
+    display: flex;
+    justify-content: center;
+      gap: 50px;
+    align-items: center;
+
+  }
+  h1{
+      font-style: normal;
+      font-weight: 700;
+      font-size: 64px;
+      line-height: 96px;
+      text-align: center;
+      color: #234983;
+  }
+  .header-station p {
+    font-size: 32px;
+    font-weight: 700;
+    color: #000;
+      width: 50%;
+  }
+  .all-pistes{
+      display:grid;
+      grid-template-columns: 1fr 1fr ;
+  }
 </style>
 
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+<h1>{{ stations.name }}</h1>
+    <div class="header-station">
+        <img src="https://www.lessaisies.com/templates/OT2016/images/logo_les_saisies.png" alt="">
+        <p>{{ stations.description }}</p>
+    </div>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/Users/fannygautier/Desktop/PHP-repos/hackaton-symfony/skeleton/src/Controller/StationController.php'|file_link(0) }}">src/Controller/StationController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/Users/fannygautier/Desktop/PHP-repos/hackaton-symfony/skeleton/templates/station/index.html.twig'|file_link(0) }}">templates/station/index.html.twig</a></code></li>
-    </ul>
+
+    <div class="les-pistes">
+        <div class="navigation">⛷️Les pistes  🚡Les remontées </div>
+        <p>Trier par : Nom de A à Z </p>
+
+        <div class="all-pistes">
+            {% for pistes in stations.skiTracks %}
+            <div class="piste">
+                <h2>{{ pistes.name }}</h2>
+                <p>{{ pistes.open|date('H:i:s') }}</p>
+                <p>{{ pistes.close|date('H:i:s') }}</p>
+                <p>{{ pistes.difficulty }}</p>
+            {% endfor %}
+        </div>
+
+    </div>
+
 </div>
 {% endblock %}

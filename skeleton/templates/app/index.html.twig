@@ -9,12 +9,18 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/Users/fannygautier/Desktop/PHP-repos/hackaton-symfony/skeleton/src/Controller/AppController.php'|file_link(0) }}">src/Controller/AppController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/Users/fannygautier/Desktop/PHP-repos/hackaton-symfony/skeleton/templates/app/index.html.twig'|file_link(0) }}">templates/app/index.html.twig</a></code></li>
-    </ul>
+    {% for domain in domains %}
+    <div>{{ domain.name }}</div>
+        {% for station in stations %}
+        {% if station.domaine  ==  domain %}
+            <a href="{{ path('app_station',{'id':station.id}) }}">
+            <div>{{ station.name }}</div>
+
+            </a>
+            {% endif %}
+        {% endfor %}
+    {% endfor %}
+
 </div>
 {% endblock %}
