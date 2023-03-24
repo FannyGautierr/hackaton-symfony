@@ -8,19 +8,13 @@ use Doctrine\ORM\QueryBuilder;
 use EasyCorp\Bundle\EasyAdminBundle\Collection\FieldCollection;
 use EasyCorp\Bundle\EasyAdminBundle\Collection\FilterCollection;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
-<<<<<<< HEAD
-use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\TimeField;
-=======
-use EasyCorp\Bundle\EasyAdminBundle\Dto\EntityDto;
 use EasyCorp\Bundle\EasyAdminBundle\Dto\SearchDto;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TimeField;
 use Symfony\Bundle\SecurityBundle\Security;
->>>>>>> fanny
+use EasyCorp\Bundle\EasyAdminBundle\Dto\EntityDto;
+
 
 class SkiLiftCrudController extends AbstractCrudController
 {   private $security;
@@ -40,13 +34,6 @@ class SkiLiftCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-<<<<<<< HEAD
-            TextField::new('name'),
-            TextField::new('type'),
-            TimeField::new('open'),
-            TimeField::new('close'),
-            TextField::new('information')
-=======
 
             TextField::new('name'),
             TextField::new('type'),
@@ -56,7 +43,6 @@ class SkiLiftCrudController extends AbstractCrudController
             TextField::new('information')
 
 
->>>>>>> fanny
         ];
     }
 
