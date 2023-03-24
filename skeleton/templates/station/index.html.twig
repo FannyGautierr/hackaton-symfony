@@ -33,7 +33,7 @@
       grid-template-columns: 1fr 1fr ;
   }
 
-    div.hide {
+    .hide {
         display: none;
     }
 
@@ -110,7 +110,7 @@
 
         {# Adam / remontées #}
 
-        <div class="hide all-lifts">
+        <div class="all-lifts">
             {% for lift in stations.skiLifts %}
             <div class="single-lift">
                 <h2>{{ lift.name }}</h2>
