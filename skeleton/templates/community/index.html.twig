@@ -1,0 +1,112 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Community - Ski{% endblock %}
+
+{% block body %}
+
+    <div>
+        <h1>HEADER</h1>
+    </div>
+
+    <div class="communityPage flex flex-col">
+        <div class="searchBar flex relative items-center m-auto my-16">
+            <input class="border-b-black border-b-2 focus:outline-none text-xl w-[30vw]" type="text" placeholder="Rechercher un post...">
+            <i class="relative right-6 fa fa-search fa-2x" aria-hidden="true"></i>
+        </div>
+
+        <div class="content flex items-start relative">
+            <div class="navContent mx-16 sticky top-2 ">
+                <h2>Catégories</h2>
+                <div class="feedNav mb-4">
+                    <h3>Tous</h3>
+                    <h3>Infos officielles</h3>
+                    <h3>Événements</h3>
+                    <h3>Concours</h3>
+                    <h3>Bons plans</h3>
+                    <h3>Pour les djeuns</h3>
+                    <h3>Coin photos</h3>
+                    <h3>Objets perdus</h3>
+                </div>
+            </div>
+
+            <div class="separator h-[60vh] w-[3px] bg-grisBleu sticky top-8"></div>
+
+            <div class="feedContent m-auto">
+                <div class="newPost flex flex-col gap-6 items-center mb-8">
+                    <h2>Rédiger un post</h2>
+
+                    <div class="divContentNewPost createNewPost flex bg-grisBg rounded-lg shadow-sm">
+
+                        <div class="contentNewPost p-8 flex items-start gap-8 w-[60vw]">
+                            <img class="rounded-full border-2 border-black" src="{{ asset('img/search.png') }}">
+
+                            <div class="flex flex-col gap-6 w-[100%]">
+                                <div class="typeLineNewPost relative flex items-center justify-between">
+                                    <div class="flex flex-col items-center">
+                                        <div class="categoryChoice flex items-center text-xl gap-4">
+                                            <p class="text-bleuClair">Catégorie: </p>
+                                            <div class="cursor-pointer flex items-center gap-4" id="menu-button">
+                                                <p class="text-bleuFoncé font-bold">Bons Plans</p>
+                                                <i class="fa fa-caret-down fa-lg bleuClair" aria-hidden="true"></i>
+                                            </div>
+                                        </div>
+                                        <div id="menu-dropdown" class="hidden absolute top-6 z-10 w-48 mt-2 bg-white rounded-md shadow-lg">
+                                            <a href="#" class="dropdown-content">Infos officielles</a>
+                                            <a href="#" class="dropdown-content">Événements</a>
+                                            <a href="#" class="dropdown-content">Concours</a>
+                                            <a href="#" class="dropdown-content">Bons plans</a>
+                                            <a href="#" class="dropdown-content">Pour les djeuns</a>
+                                            <a href="#" class="dropdown-content">Coin photos</a>
+                                            <a href="#" class="dropdown-content">Objets perdus</a>
+                                        </div>
+                                    </div>
+
+                                    <label for="file-upload" class="bg-grisBleu hover:bg-grisTextArea focus:outline-none focus:shadow-outline rounded-lg py-2 px-4 cursor-pointer">
+                                        <span class="bleuClair font-medium">Choisir une image</span>
+                                        <input id="file-upload" type="file" class="hidden"/>
+                                    </label>
+                                </div>
+
+                                <textarea class="bg-grisTextArea rounded-md p-4 w-[100%] h-[100px]" placeholder="Rédigez votre message..."></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="feed">
+                    <div class="flex flex-col items-center gap-6">
+                        <div class="flex flex-col items-center">
+                            <h2>Fil d'actus</h2>
+                            <h3>TOUS</h3>
+                        </div>
+                        <div class="newPost flex flex-col gap-6 items-center mb-8">
+                            <div class="divContentNewPost createNewPost flex bg-grisBg rounded-lg shadow-sm">
+
+                                <div class="contentNewPost p-8 flex items-start gap-8 w-[60vw]">
+                                    <img class="rounded-full border-2 border-black" src="{{ asset('img/search.png') }}">
+
+                                    <div class="flex flex-col gap-6 w-[100%]">
+                                        <div class="typeLineNewPost relative flex items-center justify-between">
+                                            <div class="flex flex-col items-center">
+                                                <div class="categoryChoice flex items-center text-xl gap-4">
+                                                    <p class="text-bleuFoncé font-bold">Bons Plans</p>
+                                                </div>
+                                            </div>
+
+                                            <p class="text-grisBleu font-bold">date</p>
+                                        </div>
+
+                                        <p class="bg-grisTextArea rounded-md p-4 w-[100%] h-[100px]">content</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    {% include 'components/_footer.html.twig' %}
+{% endblock %}

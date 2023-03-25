@@ -4,19 +4,45 @@
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
-        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+
         {% block stylesheets %}
+            <link rel="stylesheet" href="{{ asset('css/community.css') }}">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
 
+<<<<<<< HEAD
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
         
+=======
+>>>>>>> angel-dev
     </head>
     <body>
         {% include "partials/_nav.html.twig" %}
         {% block body %}{% endblock %}
         {% include "partials/_footer.html.twig" %}
     </body>
+
+    {% block javascripts %}
+        {{ encore_entry_script_tags('app') }}
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script>
+            tailwind.config = {
+                theme: {
+                    extend: {
+                        colors: {
+                            bleuFoncé: '#234983',
+                            bleuClair: '#627EA9',
+                            grisBleu: '#A2AEC0',
+                            grisBg: '#F4F4F4',
+                            grisTextArea: '#D9D9D9',
+                        }
+                    }
+                }
+            }
+        </script>
+        <script src="{{ asset('js/community.js') }}"></script>
+    {% endblock %}
 </html>
