@@ -3,9 +3,11 @@
 {% block title %}Community - Ski{% endblock %}
 
 {% block body %}
+    <link rel="stylesheet" href="{{ asset('css/community.css') }}">
+    <link rel="stylesheet" href="{{ asset('style/_banner.css') }}" />
 
-    <div>
-        <h1>HEADER</h1>
+    <div class="banner">
+        <h1>Community</h1>
     </div>
 
     <div class="communityPage flex flex-col">
@@ -32,10 +34,12 @@
             <div class="separator h-[60vh] w-[3px] bg-grisBleu sticky top-8"></div>
 
             <div class="feedContent m-auto">
-                <div class="newPost flex flex-col gap-6 items-center mb-8">
+
+                {% if app.user %}
+                    <div class="newPost flex flex-col gap-6 items-center mb-8">
                     <h2>Rédiger un post</h2>
 
-                    <div class="divContentNewPost createNewPost flex bg-grisBg rounded-lg shadow-sm">
+                    <div class="divContentNewPost createNewPost flex bg-grisBg rounded-lg shadow-sm relative">
 
                         <div class="contentNewPost p-8 flex items-start gap-8 w-[60vw]">
                             <img class="rounded-full border-2 border-black" src="{{ asset('img/search.png') }}">
@@ -51,13 +55,13 @@
                                             </div>
                                         </div>
                                         <div id="menu-dropdown" class="hidden absolute top-6 z-10 w-48 mt-2 bg-white rounded-md shadow-lg">
-                                            <a href="#" class="dropdown-content">Infos officielles</a>
-                                            <a href="#" class="dropdown-content">Événements</a>
-                                            <a href="#" class="dropdown-content">Concours</a>
-                                            <a href="#" class="dropdown-content">Bons plans</a>
-                                            <a href="#" class="dropdown-content">Pour les djeuns</a>
-                                            <a href="#" class="dropdown-content">Coin photos</a>
-                                            <a href="#" class="dropdown-content">Objets perdus</a>
+                                            <p class="dropdown-content">Infos officielles</p>
+                                            <p class="dropdown-content">Événements</p>
+                                            <p class="dropdown-content">Concours</p>
+                                            <p class="dropdown-content">Bons plans</p>
+                                            <p class="dropdown-content">Pour les djeuns</p>
+                                            <p class="dropdown-content">Coin photos</p>
+                                            <p class="dropdown-content">Objets perdus</p>
                                         </div>
                                     </div>
 
@@ -68,10 +72,15 @@
                                 </div>
 
                                 <textarea class="bg-grisTextArea rounded-md p-4 w-[100%] h-[100px]" placeholder="Rédigez votre message..."></textarea>
+
+                                <p class="sendBtn bg-bleuFoncé rounded-full shadow-md absolute right-4 bottom-4">
+                                    <i class="py-3 pr-4 pl-3 fa fa-paper-plane fa-2x text-white rotate-25" aria-hidden="true"></i>
+                                </p>
                             </div>
                         </div>
                     </div>
                 </div>
+                {% endif %}
 
                 <div class="feed">
                     <div class="flex flex-col items-center gap-6">
@@ -108,5 +117,10 @@
             </div>
         </div>
     </div>
-    {% include 'components/_footer.html.twig' %}
+{% endblock %}
+{% block javascripts %}
+    {{ encore_entry_script_tags('app') }}
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="{{ asset('js/tailwind.js') }}"></script>
+    <script src="{{ asset('js/community.js') }}"></script>
 {% endblock %}

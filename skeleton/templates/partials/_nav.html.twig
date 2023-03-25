@@ -9,7 +9,7 @@
     <div>
         <ul>
             <li><a href="{{ path ('app_app') }}">Home</a></li>
-            <li><a href="">Community</a></li>
+            <li><a href="{{ path ('app_community') }}">Community</a></li>
         {% if app.user %}
             <li><a href="#">Profile</a></li>
             <li><a href="{{ path ('app_logout') }}">Logout</a></li>
