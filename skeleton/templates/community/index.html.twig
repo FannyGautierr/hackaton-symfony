@@ -20,14 +20,14 @@
             <div class="navContent mx-16 sticky top-2 ">
                 <h2>Catégories</h2>
                 <div class="feedNav mb-4">
-                    <h3>Tous</h3>
-                    <h3>Infos officielles</h3>
-                    <h3>Événements</h3>
-                    <h3>Concours</h3>
-                    <h3>Bons plans</h3>
-                    <h3>Pour les djeuns</h3>
-                    <h3>Coin photos</h3>
-                    <h3>Objets perdus</h3>
+                    <a href="/community"><h3>Tous</h3></a>
+                    <a href="/community/Infos%20officielles"><h3>Infos officielles</h3></a>
+                    <a href="/community/Événements"><h3>Événements</h3></a>
+                    <a href="/community/Concours"><h3>Concours</h3></a>
+                    <a href="/community/Bons%20plans"><h3>Bons plans</h3></a>
+                    <a href="/community/Pour%20les%20djeuns"><h3>Pour les djeuns</h3></a>
+                    <a href="/community/Coin%20photos"><h3>Coin photos</h3></a>
+                    <a href="/community/Objets%20perdus"><h3>Objets perdus</h3></a>
                 </div>
             </div>
 
@@ -37,49 +37,49 @@
 
                 {% if app.user %}
                     <div class="newPost flex flex-col gap-6 items-center mb-8">
-                    <h2>Rédiger un post</h2>
+                        <h2>Rédiger un post</h2>
 
-                    <div class="divContentNewPost createNewPost flex bg-grisBg rounded-lg shadow-sm relative">
+                        <div class="divContentNewPost createNewPost flex bg-grisBg rounded-lg shadow-sm relative">
 
-                        <div class="contentNewPost p-8 flex items-start gap-8 w-[60vw]">
-                            <img class="rounded-full border-2 border-black" src="{{ asset('img/search.png') }}">
+                            <div class="contentNewPost p-8 flex items-start gap-8 w-[60vw]">
+                                <img class="rounded-full border-2 border-black" src="{{ asset('img/search.png') }}">
 
-                            <div class="flex flex-col gap-6 w-[100%]">
-                                <div class="typeLineNewPost relative flex items-center justify-between">
-                                    <div class="flex flex-col items-center">
-                                        <div class="categoryChoice flex items-center text-xl gap-4">
-                                            <p class="text-bleuClair">Catégorie: </p>
-                                            <div class="cursor-pointer flex items-center gap-4" id="menu-button">
-                                                <p class="text-bleuFoncé font-bold">Bons Plans</p>
-                                                <i class="fa fa-caret-down fa-lg bleuClair" aria-hidden="true"></i>
+                                <div class="flex flex-col gap-6 w-[100%]">
+                                    <div class="typeLineNewPost relative flex items-center justify-between">
+                                        <div class="flex flex-col items-center">
+                                            <div class="categoryChoice flex items-center text-xl gap-4">
+                                                <p class="text-bleuClair">Catégorie: </p>
+                                                <div class="cursor-pointer flex items-center gap-4" id="menu-button">
+                                                    <p class="text-bleuFoncé font-bold">Bons plans</p>
+                                                    <i class="fa fa-caret-down fa-lg bleuClair" aria-hidden="true"></i>
+                                                </div>
+                                            </div>
+                                            <div id="menu-dropdown" class="hidden absolute top-6 z-10 w-48 mt-2 bg-white rounded-md shadow-lg">
+                                                <p class="dropdown-content">Infos officielles</p>
+                                                <p class="dropdown-content">Événements</p>
+                                                <p class="dropdown-content">Concours</p>
+                                                <p class="dropdown-content">Bons plans</p>
+                                                <p class="dropdown-content">Pour les djeuns</p>
+                                                <p class="dropdown-content">Coin photos</p>
+                                                <p class="dropdown-content">Objets perdus</p>
                                             </div>
                                         </div>
-                                        <div id="menu-dropdown" class="hidden absolute top-6 z-10 w-48 mt-2 bg-white rounded-md shadow-lg">
-                                            <p class="dropdown-content">Infos officielles</p>
-                                            <p class="dropdown-content">Événements</p>
-                                            <p class="dropdown-content">Concours</p>
-                                            <p class="dropdown-content">Bons plans</p>
-                                            <p class="dropdown-content">Pour les djeuns</p>
-                                            <p class="dropdown-content">Coin photos</p>
-                                            <p class="dropdown-content">Objets perdus</p>
-                                        </div>
+
+                                        <label for="file-upload" class="bg-grisBleu hover:bg-grisTextArea focus:outline-none focus:shadow-outline rounded-lg py-2 px-4 cursor-pointer">
+                                            <span class="bleuClair font-medium">Choisir une image</span>
+                                            <input id="file-upload" type="file" class="hidden"/>
+                                        </label>
                                     </div>
 
-                                    <label for="file-upload" class="bg-grisBleu hover:bg-grisTextArea focus:outline-none focus:shadow-outline rounded-lg py-2 px-4 cursor-pointer">
-                                        <span class="bleuClair font-medium">Choisir une image</span>
-                                        <input id="file-upload" type="file" class="hidden"/>
-                                    </label>
+                                    <textarea class="bg-grisTextArea rounded-md p-4 w-[100%] h-[100px]" placeholder="Rédigez votre message..."></textarea>
+
+                                    <p class="sendBtn bg-bleuFoncé rounded-full shadow-md absolute right-4 bottom-4">
+                                        <i class="py-3 pr-4 pl-3 fa fa-paper-plane fa-2x text-white rotate-25" aria-hidden="true"></i>
+                                    </p>
                                 </div>
-
-                                <textarea class="bg-grisTextArea rounded-md p-4 w-[100%] h-[100px]" placeholder="Rédigez votre message..."></textarea>
-
-                                <p class="sendBtn bg-bleuFoncé rounded-full shadow-md absolute right-4 bottom-4">
-                                    <i class="py-3 pr-4 pl-3 fa fa-paper-plane fa-2x text-white rotate-25" aria-hidden="true"></i>
-                                </p>
                             </div>
                         </div>
                     </div>
-                </div>
                 {% endif %}
 
                 <div class="feed">
@@ -111,6 +111,30 @@
                             </div>
                         </div>
                     </div>
+                    {% for post in commPosts %}
+                        <div class="newPost flex flex-col gap-6 items-center mb-8">
+                            <div class="divContentNewPost createNewPost flex bg-grisBg rounded-lg shadow-sm">
+
+                                <div class="contentNewPost p-8 flex items-start gap-8 w-[60vw]">
+                                    <img class="rounded-full border-2 border-black" src="{{ asset('img/search.png') }}">
+
+                                    <div class="flex flex-col gap-6 w-[100%]">
+                                        <div class="typeLineNewPost relative flex items-center justify-between">
+                                            <div class="flex flex-col items-center">
+                                                <div class="categoryChoice flex items-center text-xl gap-4">
+                                                    <p class="text-bleuFoncé font-bold">{{ post.category }}</p>
+                                                </div>
+                                            </div>
+
+                                            <p class="text-grisBleu font-bold">{{ post.date|date('F j, Y') }}</p>
+                                        </div>
+
+                                        <p class="bg-grisTextArea rounded-md p-4 w-[100%] h-[100px]">{{ post.content }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
 
                 </div>
 

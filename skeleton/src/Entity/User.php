@@ -39,9 +39,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToOne(mappedBy: 'user', cascade: ['persist', 'remove'])]
     private ?Station $station = null;
 
+    #[ORM\OneToMany(mappedBy: 'user_id', targetEntity: CommPost::class, orphanRemoval: true)]
+    private Collection $commPosts;
+
     public function __construct()
     {
         $this->stations = new ArrayCollection();
+        $this->commPosts = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -179,5 +183,35 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function __toString()
     {
         return $this->email;
+    }
+
+    /**
+     * @return Collection<int, CommPost>
+     */
+    public function getCommPosts(): Collection
+    {
+        return $this->commPosts;
+    }
+
+    public function addCommPost(CommPost $commPost): self
+    {
+        if (!$this->commPosts->contains($commPost)) {
+            $this->commPosts->add($commPost);
+            $commPost->setUserId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCommPost(CommPost $commPost): self
+    {
+        if ($this->commPosts->removeElement($commPost)) {
+            // set the owning side to null (unless already changed)
+            if ($commPost->getUserId() === $this) {
+                $commPost->setUserId(null);
+            }
+        }
+
+        return $this;
     }
 }
