@@ -30,7 +30,7 @@ class AppFixtures extends Fixture
 
         $domaine = new Domain();
         $domaine->setName('Domaine des Saisies');
-        $domaine->setLogo('logo.png');
+        $domaine->setLogo('skeleton/public/img/logo-domaine.jpeg');
         $manager->persist($domaine);
         $manager->flush();
 
