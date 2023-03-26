@@ -70,20 +70,18 @@ class AppFixtures extends Fixture
         foreach ($stations as $stat){
             for ($i = 1; $i<=10; $i++){
                 $skilift = new SkiLift();
-                $skilift->setName('Remontée de la station ' . $stat->getName());
+                $skilift->setName('Remontée '.$i);
                 $date = new \DateTime();
                 $skilift->setClose($date);
                 $skilift->setOpen($date);
-                $skilift->setInformation('information de la remontée');
                 $skilift->setType($skiliftType[rand(0, 3)]);
                 $skilift->setStation($stat);
                 $manager->persist($skilift);
 
                 $skitrack = new SkiTrack();
-                $skitrack->setName('Piste de la station' . $stat->getName());
+                $skitrack->setName('Piste '.$i);
                 $skitrack->setOpen($date);
                 $skitrack->setClose($date);
-                $skitrack->setInformation('Information de la piste');
                 $skitrack->setDifficulty(($skiTrackType[rand(0,3)]));
                 $skitrack->setException(0);
                 $skitrack->setStation($stat);

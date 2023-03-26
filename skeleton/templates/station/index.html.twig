@@ -5,8 +5,15 @@
 {% block body %}
 <style>
     *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    *{
+
         font-family: Poppins, sans-serif;
     }
+
   .header-station {
     display: flex;
       flex-direction: column;
@@ -59,6 +66,7 @@ div.hide {
       flex-direction: column;
       gap: 50px;
       justify-content: center;
+      margin-top: 60px;
   }
   .single-lift{
       margin: 0 auto;
@@ -124,14 +132,6 @@ div.hide {
       opacity: 0.5;
   }
 
-  .trier{
-      font-weight: 500;
-      font-size: 48px;
-      line-height: 48px;
-      color: #234983;
-
-      margin: 60px;
-  }
   .name{
       text-align: center;
       font-weight: 500;
@@ -144,19 +144,7 @@ div.hide {
       color: #234983;
       display: none;
   }
-  .trier::after{
 
-      content: " ";
-      display: inline-block;
-      width: 0;
-      height: 0;
-      margin-left: 10px;
-      vertical-align: middle;
-      border-top: 15px solid;
-      border-right: 15px solid transparent;
-      border-left: 15px solid transparent;
-
-  }
   .piste p{
      color: #627EA9;
       font-size: 36px;
@@ -252,19 +240,31 @@ div.hide {
         justify-content: center;
         margin: 0 auto;
     }
+    .flash{
+        color: #627EA9;
+        font-size: 25px;
+        text-align: center;
+    }
 </style>
 
 <div class="example-wrapper">
+    {% for type, messages in app.flashes %}
+        {% for message in messages %}
+            <p class="flash">{{ message }}</p>
+        {% endfor %}
+    {% endfor %}
 
     <div class="header-station">
-        <h1>{{ stations.name |upper }}</h1>
+        <h1 class="name">{{ stations.name }}</h1>
         <div class="description">
+            {% if stations.logo !=null %}
         <img src="{{ asset('uploads/logo/' ~ stations.logo) }}" alt="" class="logo">
+            {% else %}
+                <img src="https://www.lessaisies.com/medias/images/Logo/LESSAISIES_HAPPYALTITUDE_NOIR_1.jpg" alt="" class="logo">
+            {% endif %}
         <p>{{ stations.description }}</p>
         </div>
     </div>
-
-
 
     <div class="les-pistes">
         <div id="navigation" >
@@ -273,7 +273,7 @@ div.hide {
             </div>
             <div class="slider"></div>
         </div>
-        <p class="trier">Trier par :<b> Difficulté</b> </p>
+
 
         <div class="all-pistes">
             {% for pistes in stations.skiTracks %}
@@ -297,7 +297,9 @@ div.hide {
                             <p class="difficulty">⚫️ {{ pistes.difficulty }}</p>
                         {% endif %}
 
-
+                        {% if pistes.skiLift !=null %}
+                            <p>🚡 {{ pistes.skiLift.name }}</p>
+                        {% endif %}
 
                 {% if pistes.information != null %}
                 <span class="important"> ⚠️ <b>{{ pistes.information }}</b></span>
@@ -330,6 +332,8 @@ div.hide {
                     </div>
 
                 </div>
+
+                <a href="{{ path('associated_track',{id:lift.id}) }}">⛷️ Voir les pistes associés</a>
             </div>
             {% endfor %}
         </div>
@@ -338,4 +342,10 @@ div.hide {
 {% endblock %}
 {% block javascripts %}
     <script src="{{ asset('js/script.js') }}"></script>
+    <script>
+        window.addEventListener('scroll',function(){
+            var header = document.querySelector('header');
+            header.classList.toggle('sticky',window.scrollY > 0);
+        });
+    </script>
 {% endblock %}

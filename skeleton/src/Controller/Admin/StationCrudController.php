@@ -38,12 +38,21 @@ class StationCrudController extends AbstractCrudController
 
     public function configureFields(string $pageName): iterable
     {
+        if ($this->isGranted('ROLE_SUPER_ADMIN')) {
+            return [
+                TextField::new('name'),
+                TextEditorField::new('description'),
+                AssociationField::new('user'),
+            ];
+        }else{
+
+
 
         return [
 
             TextField::new('name'),
             TextEditorField::new('description'),
-            AssociationField::new('user'),
+
             ImageField::new('logo')
                 ->setUploadDir('public/uploads/logo')
                 ->setBasePath('uploads/logo')
@@ -54,11 +63,18 @@ class StationCrudController extends AbstractCrudController
                     ]
                 ]),
         ];
+        }
     }
 
     public function createIndexQueryBuilder(SearchDto $searchDto, EntityDto $entityDto, FieldCollection $fields, FilterCollection $filters): QueryBuilder
     {
         $userId = $this->security->getUser()->getId();
+        if($this->isGranted('ROLE_SUPER_ADMIN')){
+            return $this->entityManager->createQueryBuilder()
+                ->select('s')
+                ->from('App\Entity\Station', 's');
+        }else{
+
 
         return $this->entityManager->createQueryBuilder()
             ->select('s')
@@ -66,6 +82,6 @@ class StationCrudController extends AbstractCrudController
             ->where('s.user = :userId')
             ->setParameter('userId', $userId);
     }
-
+    }
 
 }
