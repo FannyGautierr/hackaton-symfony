@@ -1,24 +1,48 @@
-.titles {
+@media screen and (max-width: 1000px) {
+  .titles {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+  }
+
+  .titles h3 {
+    font-size: 24px;
+    font-weight: 600;
+    margin: 0 auto;
+    color: #0077b6;
+   
+  }
+
+  .titles h2 {
+    font-size: 48px;
+    font-weight: 700;
+    color: #03045e;
+    margin: 0 auto;
+  }
 }
-  
-.titles h3{
+
+.titles {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.titles h3 {
   font-size: 36px;
   font-weight: 600;
   margin-left: -200px;
-  color: #0077B6;
+  color: #0077b6;
   margin-bottom: 0;
   margin-top: 100px;
 }
-  
-.titles h2{
+
+.titles h2 {
   font-size: 56px;
   font-weight: 700;
   margin-left: 200px;
-  color: #03045E;
+  color: #03045e;
   margin-top: 10px;
   margin-bottom: 100px;
 }
