@@ -15,3 +15,9 @@ h3{
 .dropdown-content:hover{
     background-color: #F4F4F4;
 }
+
+.feedNav a:hover{
+    font-weight: bold;
+    text-decoration: #234983 solid 2px;
+    transition: ease-in 200ms;
+}

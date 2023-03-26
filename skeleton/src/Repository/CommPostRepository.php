@@ -39,6 +39,16 @@ class CommPostRepository extends ServiceEntityRepository
         }
     }
 
+    public function findBySearchQuery(string $query)
+    {
+        return $this->createQueryBuilder('c')
+            ->where('c.title LIKE :query')
+            ->orWhere('c.content LIKE :query')
+            ->setParameter('query', '%'.$query.'%')
+            ->getQuery()
+            ->getResult();
+    }
+
 //    /**
 //     * @return CommPost[] Returns an array of CommPost objects
 //     */
