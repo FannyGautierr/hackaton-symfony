@@ -86,29 +86,11 @@
                     <div class="flex flex-col items-center gap-6">
                         <div class="flex flex-col items-center">
                             <h2>Fil d'actus</h2>
-                            <h3>TOUS</h3>
-                        </div>
-                        <div class="newPost flex flex-col gap-6 items-center mb-8">
-                            <div class="divContentNewPost createNewPost flex bg-grisBg rounded-lg shadow-sm">
-
-                                <div class="contentNewPost p-8 flex items-start gap-8 w-[60vw]">
-                                    <img class="rounded-full border-2 border-black" src="{{ asset('img/search.png') }}">
-
-                                    <div class="flex flex-col gap-6 w-[100%]">
-                                        <div class="typeLineNewPost relative flex items-center justify-between">
-                                            <div class="flex flex-col items-center">
-                                                <div class="categoryChoice flex items-center text-xl gap-4">
-                                                    <p class="text-bleuFoncé font-bold">Bons Plans</p>
-                                                </div>
-                                            </div>
-
-                                            <p class="text-grisBleu font-bold">date</p>
-                                        </div>
-
-                                        <p class="bg-grisTextArea rounded-md p-4 w-[100%] h-[100px]">content</p>
-                                    </div>
-                                </div>
-                            </div>
+                            {% if sort is defined %}
+                                <h3 class="categoryName uppercase">{{ sort }}</h3>
+                            {% else %}
+                                <h3>TOUS</h3>
+                            {% endif %}
                         </div>
                     </div>
                     {% for post in commPosts %}
@@ -126,7 +108,7 @@
                                                 </div>
                                             </div>
 
-                                            <p class="text-grisBleu font-bold">{{ post.date|date('F j, Y') }}</p>
+                                            <p class="text-grisBleu font-bold text-sm">le {{ post.date|date("d/m/Y")}} à {{ post.date|date("H:i")}}</p>
                                         </div>
 
                                         <p class="bg-grisTextArea rounded-md p-4 w-[100%] h-[100px]">{{ post.content }}</p>

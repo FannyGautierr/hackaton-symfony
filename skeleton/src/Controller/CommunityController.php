@@ -24,10 +24,11 @@ class CommunityController extends AbstractController
     public function category(CommPostRepository $commPostRepository, $sort): Response
     {
         $commPosts = $commPostRepository->findBy(['category' => $sort]);
-        $sort = urlencode($sort);
+        $sort = urldecode($sort);
 
         return $this->render('community/index.html.twig', [
             'commPosts' => $commPosts,
+            'sort' => $sort,
         ]);
     }
 
