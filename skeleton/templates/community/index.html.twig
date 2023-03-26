@@ -11,16 +11,16 @@
     </div>
 
     <div class="communityPage flex flex-col items-center">
-        <form class=" mt-16 mb-32" method="get" action="/community/search">
+        <form class=" mt-16 lg:mb-32 mb-16 mx-auto " method="get" action="/community/search">
             <input class="border-b-black border-b-2 focus:outline-none text-xl w-[30vw]" type="text" name="q" placeholder="Rechercher un post...">
             <button type="submit">
                 <i class="relative right-6 fa fa-search fa-2x" aria-hidden="true"></i>
             </button>
         </form>
 
-        <div class="content flex items-start relative lg:flex-row flex-col w-[100%]" >
+        <div class="content flex lg:items-start items-center relative lg:flex-row flex-col w-[100%]" >
             <div class="navContent lg:mx-16 lg:sticky top-2 flex flex-col items-center mx-0">
-                <h2>Catégories</h2>
+                <h2 class="mb-8">Catégories</h2>
                 <div class="feedNav mb-4 lg:block flex flex-wrap gap-4 justify-center lg:w-[15vw] w-[90vw]">
                     <a href="/community"><h3>Tous</h3></a>
                     <a href="/community/sort/Infos%20officielles"><h3>Infos officielles</h3></a>
@@ -33,27 +33,26 @@
                 </div>
             </div>
 
-            <div class="separator h-[60vh] w-[3px] bg-grisBleu lg:sticky top-8 "></div>
+            <div class="separator lg:h-[60vh] h-[5vh] w-[3px] bg-grisBleu lg:sticky top-8 lg:rotate-0 rotate-90"></div>
 
             <div class="feedContent m-auto">
-
                 {% if app.user %}
-                    <div class="newPost flex flex-col gap-6 items-center mb-8">
-                        <h2>Rédiger un post</h2>
+                    <div class="newPost flex flex-col gap-6 items-center mb-8 m-auto">
+                        <h2 class="mb-8">Rédiger un post</h2>
 
 
                         <div class="divContentNewPost createNewPost flex bg-grisBg rounded-lg shadow-sm relative">
 
-                            <div class="contentNewPost p-8 flex items-start gap-8 w-[60vw]">
+                            <div class="contentNewPost p-8 flex items-start gap-8 lg:w-[60vw] w-[88vw]">
                                 <img class="rounded-full border-2 border-black" src="{{ asset('img/search.png') }}">
 
                                 <form action="/add-post" method="post" enctype="multipart/form-data" class="w-[100%]">
                                     <div class="flex flex-col gap-6 w-[100%]">
                                         <div class="typeLineNewPost relative flex items-center justify-between">
                                             <div class="flex flex-col items-center">
-                                                <div class="flex">
-                                                    <p class="text-bleuClair">Catégorie: </p>
-                                                    <select name="category" class="dropdown-content">
+                                                <div class="flex items-center gap-4">
+                                                    <p class="text-bleuClair text-lg">Catégorie: </p>
+                                                    <select name="category" class="dropdown-content text-bleuFoncé text-xl font-bold">
                                                         {% if app.user.roles == ["ROLE_ADMIN"] %}
                                                             <option value="Infos officielles">Infos officielles</option>
                                                         {% endif %}
@@ -83,7 +82,7 @@
 
                 <div class="feed">
                     <div class="flex flex-col items-center gap-6">
-                        <div class="flex flex-col items-center">
+                        <div class="flex flex-col items-center mb-8">
                             <h2>Fil d'actus</h2>
                             {% if sort is defined %}
                                 <h3 class="categoryName uppercase">{{ sort }}</h3>
@@ -96,7 +95,7 @@
                         <div class="newPost flex flex-col gap-6 items-center mb-8">
                             <div class="divContentNewPost createNewPost flex bg-grisBg rounded-lg shadow-sm">
 
-                                <div class="contentNewPost p-8 flex items-start gap-8 w-[60vw]">
+                                <div class="contentNewPost p-8 flex items-start gap-8 lg:w-[60vw] w-[88vw]">
                                     <img class="rounded-full border-2 border-black" src="{{ asset('img/search.png') }}">
 
                                     <div class="flex flex-col gap-6 w-[100%]">
