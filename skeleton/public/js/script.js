@@ -15,6 +15,24 @@ document.addEventListener('DOMContentLoaded', function() {
         skiliftDiv.classList.add("hide");
         skitrackDiv.classList.remove("hide");
     });
+
+
+    let slider=document.querySelector(".slider");
+    let menu=document.querySelector("#navigation");
+    menu.addEventListener("mouseover",function(){
+        slider.style.display='block';
+        const onMouseMove = (e) =>{
+            slider.style.left = e.pageX + 'px';
+        };
+        document.addEventListener('mousemove', onMouseMove);
+    });
+    menu.addEventListener("mouseout",function(){
+        slider.style.display='none';
+    });
+
+
 });
+
+
 
 
