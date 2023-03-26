@@ -1,3 +1,6 @@
+html{
+    overflow-x: hidden;
+}
 h2{
     color: #234983;
     font-size: 48px !important;
@@ -10,7 +13,12 @@ h3{
     display: block;
     padding: 8px 16px;
     color: #627EA9;
+    cursor: pointer;
+    border-right: 50px;
 }
-.dropdown-content:hover{
-    background-color: #F4F4F4;
+
+.feedNav a:hover{
+    font-weight: bold;
+    text-decoration: #234983 solid 2px;
+    transition: ease-in 200ms;
 }

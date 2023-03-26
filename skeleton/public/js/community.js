@@ -10,3 +10,12 @@ document.addEventListener('click', (event) => {
         dropdown.classList.add('hidden');
     }
 });
+
+const dropdownContent = document.querySelectorAll('.dropdown-content');
+const menuButton = document.querySelector('#menu-button p');
+
+dropdownContent.forEach(item => {
+    item.addEventListener('click', function() {
+        menuButton.textContent = this.textContent;
+    });
+});
