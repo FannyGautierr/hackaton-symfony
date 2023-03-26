@@ -36,6 +36,9 @@ class SkiTrack
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $information = null;
 
+    #[ORM\ManyToOne(inversedBy: 'skiTracks')]
+    private ?SkiLift $skiLift = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -128,5 +131,17 @@ class SkiTrack
     public function __toString()
     {
         return $this->open->format('H:i') . ' - ' . $this->close->format('H:i') . ' ' ;
+    }
+
+    public function getSkiLift(): ?SkiLift
+    {
+        return $this->skiLift;
+    }
+
+    public function setSkiLift(?SkiLift $skiLift): self
+    {
+        $this->skiLift = $skiLift;
+
+        return $this;
     }
 }

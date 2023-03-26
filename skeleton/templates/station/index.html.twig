@@ -252,19 +252,27 @@ div.hide {
         justify-content: center;
         margin: 0 auto;
     }
+    .flash{
+        color: #627EA9;
+        font-size: 25px;
+        text-align: center;
+    }
 </style>
 
 <div class="example-wrapper">
+    {% for type, messages in app.flashes %}
+        {% for message in messages %}
+            <p class="flash">{{ message }}</p>
+        {% endfor %}
+    {% endfor %}
 
     <div class="header-station">
-        <h1>{{ stations.name |upper }}</h1>
+        <h1 class="name">{{ stations.name }}</h1>
         <div class="description">
         <img src="{{ asset('uploads/logo/' ~ stations.logo) }}" alt="" class="logo">
         <p>{{ stations.description }}</p>
         </div>
     </div>
-
-
 
     <div class="les-pistes">
         <div id="navigation" >
@@ -273,7 +281,7 @@ div.hide {
             </div>
             <div class="slider"></div>
         </div>
-        <p class="trier">Trier par :<b> Difficulté</b> </p>
+
 
         <div class="all-pistes">
             {% for pistes in stations.skiTracks %}
@@ -297,7 +305,9 @@ div.hide {
                             <p class="difficulty">⚫️ {{ pistes.difficulty }}</p>
                         {% endif %}
 
-
+                        {% if pistes.skiLift !=null %}
+                            <p>🚡 {{ pistes.skiLift.name }}</p>
+                        {% endif %}
 
                 {% if pistes.information != null %}
                 <span class="important"> ⚠️ <b>{{ pistes.information }}</b></span>
@@ -330,6 +340,8 @@ div.hide {
                     </div>
 
                 </div>
+
+                <a href="{{ path('associated_track',{id:lift.id}) }}">⛷️ Voir les pistes associés</a>
             </div>
             {% endfor %}
         </div>
