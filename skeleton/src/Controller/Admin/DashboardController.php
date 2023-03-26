@@ -50,6 +50,7 @@ class DashboardController extends AbstractDashboardController
 
         if ($this->isGranted('ROLE_SUPER_ADMIN')) {
             //yield MenuItem::linkToCrud('Users', 'fas fa-list', User::class);
+
         }
 
         yield MenuItem::linkToCrud('Stations', 'fas fa-list', Station::class);
