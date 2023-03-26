@@ -39,16 +39,20 @@ class CommunityController extends AbstractController
     public function search(CommPostRepository $commPostRepository, Request $request): Response
     {
 
-        $query = $request->request->get('q');
+        $query = $request->query->get('q');
         $query = urldecode($query);
-        $results = $commPostRepository->createQueryBuilder('e')
+        $commPosts = $commPostRepository;
+        $results = $commPosts->createQueryBuilder('e')
             ->where('e.content LIKE :query')
             ->setParameter('query', '%'.$query.'%')
             ->getQuery()
             ->getResult();
 
+
+
         return $this->render('community/index.html.twig', [
             'commPosts' => $results,
+            'sort' => 'results for "'.$query.'"',
         ]);
     }
 

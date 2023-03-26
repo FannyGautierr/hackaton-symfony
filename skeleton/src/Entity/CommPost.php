@@ -27,7 +27,6 @@ class CommPost
     #[ORM\Column(length: 501, nullable: true)]
     private ?string $content = null;
 
-
     public function getId(): ?int
     {
         return $this->id;
