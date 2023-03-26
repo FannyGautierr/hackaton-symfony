@@ -33,7 +33,7 @@ class SkiTrack
     #[ORM\Column]
     private ?bool $exception = null;
 
-    #[ORM\Column(type: Types::TEXT)]
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $information = null;
 
     public function getId(): ?int
@@ -118,7 +118,7 @@ class SkiTrack
         return $this->information;
     }
 
-    public function setInformation(string $information): self
+    public function setInformation(?string $information): self
     {
         $this->information = $information;
 

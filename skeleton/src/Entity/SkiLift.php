@@ -26,7 +26,7 @@ class SkiLift
     #[ORM\Column(type: Types::TIME_MUTABLE)]
     private ?\DateTimeInterface $close = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $information = null;
 
     #[ORM\ManyToOne(inversedBy: 'skiLifts')]
@@ -91,7 +91,7 @@ class SkiLift
         return $this->information;
     }
 
-    public function setInformation(string $information): self
+    public function setInformation(?string $information): self
     {
         $this->information = $information;
 
