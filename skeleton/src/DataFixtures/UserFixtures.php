@@ -22,9 +22,20 @@ class UserFixtures extends Fixture
         $password = $this->hasher->hashPassword($user, 'password');
         $user->setPassword($password);
 
-        $user->setRoles(['ROLE_ADMIN']);
+        $user->setRoles(['ROLE_SUPER_ADMIN']);
 
         $manager->persist($user);
+        $manager->flush();
+
+        for($i=1;$i<=5;$i++) {
+            $user = new User();
+            $user->setEmail('station'.$i."@gmail.com");
+            $password = $this->hasher->hashPassword($user, 'password');
+            $user->setPassword($password);
+            $user->setAdminRequest("yes");
+            $user->setRoles(['ROLE_ADMIN']);
+            $manager->persist($user);
+        }
         $manager->flush();
     }
 }

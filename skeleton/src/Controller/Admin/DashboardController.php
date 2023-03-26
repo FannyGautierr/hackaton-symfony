@@ -56,7 +56,7 @@ class DashboardController extends AbstractDashboardController
         }else{
 
             yield MenuItem::linkToCrud('Stations', 'fas fa-list', Station::class);
-            yield MenuItem::linkToCrud('Ski Lifts', 'fa-ski-lift', SkiLift::class);
+            yield MenuItem::linkToCrud('Ski Lifts', 'fas fa-lift', SkiLift::class);
             yield MenuItem::linkToCrud('Ski Tracks', 'fas fa-list', SkiTrack::class);
 
         }

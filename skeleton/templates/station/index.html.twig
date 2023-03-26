@@ -269,7 +269,11 @@ div.hide {
     <div class="header-station">
         <h1 class="name">{{ stations.name }}</h1>
         <div class="description">
+            {% if stations.logo !=null %}
         <img src="{{ asset('uploads/logo/' ~ stations.logo) }}" alt="" class="logo">
+            {% else %}
+                <img src="https://www.lessaisies.com/medias/images/Logo/LESSAISIES_HAPPYALTITUDE_NOIR_1.jpg" alt="" class="logo">
+            {% endif %}
         <p>{{ stations.description }}</p>
         </div>
     </div>
