@@ -26,5 +26,16 @@ class UserFixtures extends Fixture
 
         $manager->persist($user);
         $manager->flush();
+
+        for($i=1;$i<=5;$i++) {
+            $user = new User();
+            $user->setEmail('station'.$i."@gmail.com");
+            $password = $this->hasher->hashPassword($user, 'password');
+            $user->setPassword($password);
+            $user->setAdminRequest("yes");
+            $user->setRoles(['ROLE_ADMIN']);
+            $manager->persist($user);
+        }
+        $manager->flush();
     }
 }
