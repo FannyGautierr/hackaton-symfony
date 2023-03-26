@@ -4,9 +4,16 @@
 
 {% block body %}
 <style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
     body{
+
         font-family: Poppins, sans-serif;
     }
+
   .header-station {
     display: flex;
       flex-direction: column;
@@ -354,4 +361,10 @@ div.hide {
 {% endblock %}
 {% block javascripts %}
     <script src="{{ asset('js/script.js') }}"></script>
+    <script>
+        window.addEventListener('scroll',function(){
+            var header = document.querySelector('header');
+            header.classList.toggle('sticky',window.scrollY > 0);
+        });
+    </script>
 {% endblock %}
