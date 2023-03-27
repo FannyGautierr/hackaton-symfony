@@ -11,7 +11,7 @@
         <li><a href="{{ path ('app_app') }}">Home</a></li>
         <li><a href="{{ path ('app_community') }}">Community</a></li>
         {% if app.user %}
-        <li><a href="{#  #}">Profile</a></li>
+        <li><a href="{{ path('app_user') }}">Profile</a></li>
         <li><a href="{{ path ('app_logout') }}">Logout</a></li>
         {% else %}
             <li><a class="btn" href="{{ path ('app_login') }}">Login</a></li>
